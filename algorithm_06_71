@@ -1,1 +1,36 @@
+ALGORITHM: Simplify Path
 
+1. Start.
+
+2. Split the given path using "/".
+
+3. Create an empty stack.
+
+4. Traverse each part of the path.
+
+5. If the part is empty:
+       Ignore it.
+
+6. If the part is ".":
+       Ignore it because it represents
+       the current directory.
+
+7. If the part is "..":
+       If the stack is not empty:
+           Remove the last element from the stack.
+
+8. Otherwise:
+       Add the part to the stack.
+
+9. After processing all parts,
+   join the elements of the stack using "/".
+
+10. Add "/" at the beginning.
+
+11. Return the resulting simplified path.
+
+TIME COMPLEXITY:
+O(n)
+
+SPACE COMPLEXITY:
+O(n)
