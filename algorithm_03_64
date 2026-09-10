@@ -1,1 +1,38 @@
+ALGORITHM: Minimum Path Sum
 
+1. Start.
+
+2. Get the number of rows:
+       m = number of rows
+
+   Get the number of columns:
+       n = number of columns
+
+3. Traverse every cell of the grid.
+
+4. For the first cell:
+       If i = 0 and j = 0:
+           Keep the value unchanged.
+
+5. For cells in the first row:
+       If i = 0:
+           grid[i][j] = grid[i][j] + grid[i][j-1]
+
+6. For cells in the first column:
+       If j = 0:
+           grid[i][j] = grid[i][j] + grid[i-1][j]
+
+7. For all other cells:
+       grid[i][j] = grid[i][j] + min(grid[i-1][j],
+                                     grid[i][j-1])
+
+8. Continue until the bottom-right cell is reached.
+
+9. Return:
+       grid[m-1][n-1]
+
+TIME COMPLEXITY:
+O(m × n)
+
+SPACE COMPLEXITY:
+O(1)
