@@ -1,1 +1,74 @@
+# LeetCode 50 — Pow(x, n)
 
+## Problem
+
+Implement `pow(x, n)`, which calculates `x` raised to the power `n`.
+
+In other words:
+
+x^n
+
+## Approach
+
+This solution uses **Recursive Exponentiation by Squaring**.
+
+Instead of multiplying `x` by itself `n` times, we reduce the exponent at every step.
+
+- If `n = 0`, the result is `1`.
+- If `n < 0`, convert the problem using `x^(-n) = 1 / x^n`.
+- If `n` is odd, multiply one `x` and reduce the exponent by `1`.
+- If `n` is even, square `x` and divide the exponent by `2`.
+
+This makes the solution much faster for large values of `n`.
+
+## Algorithm
+
+1. If `n == 0`, return `1`.
+2. If `n < 0`:
+   - Set `x = 1 / x`.
+   - Set `n = -n`.
+3. If `n` is odd:
+   - Return `x * myPow(x, n - 1)`.
+4. If `n` is even:
+   - Return `myPow(x * x, n // 2)`.
+5. Repeat recursively until `n` becomes `0`.
+
+## Examples
+
+### Example 1
+
+Input:
+x = 2.00000, n = 10
+
+Output:
+1024.00000
+
+### Example 2
+
+Input:
+x = 2.10000, n = 3
+
+Output:
+9.26100
+
+### Example 3
+
+Input:
+x = 2.00000, n = -2
+
+Output:
+0.25000
+
+Explanation:
+2^-2 = 1 / 2^2 = 1 / 4 = 0.25
+
+## Complexity Analysis
+
+- Time Complexity: O(log |n|)
+- Space Complexity: O(log |n|) due to recursion.
+
+## Key Concept
+
+The main concept used is **Exponentiation by Squaring**.
+
+It reduces the number of calculations by repeatedly dividing the exponent by 2, making the solution efficient for very large exponents.
