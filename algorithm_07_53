@@ -1,1 +1,28 @@
+ALGORITHM: Maximum Subarray
 
+1. Start.
+
+2. Initialize:
+       curr_sum = nums[0]
+       max_sum = nums[0]
+
+3. Traverse the array from index 1 to the end.
+
+4. For each element nums[i]:
+
+       curr_sum = max(nums[i],
+                      curr_sum + nums[i])
+
+5. Update the maximum sum:
+
+       max_sum = max(max_sum, curr_sum)
+
+6. Continue until all elements are processed.
+
+7. Return max_sum.
+
+TIME COMPLEXITY:
+O(n)
+
+SPACE COMPLEXITY:
+O(1)
