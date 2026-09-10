@@ -1,1 +1,63 @@
+# LeetCode 2265 — Count Nodes Equal to Average of Subtree
 
+## Problem
+
+Given the root of a binary tree, return the number of nodes where the value of the node is equal to the average of the values in its subtree.
+
+The average is rounded down to the nearest integer.
+
+## Approach
+
+Use **Depth-First Search (DFS)**.
+
+For every node, calculate:
+
+- The sum of all values in its subtree.
+- The number of nodes in its subtree.
+
+Then calculate:
+
+average = sum // count
+
+If the current node's value is equal to this average, increase the answer by 1.
+
+The DFS returns the `(sum, count)` of the subtree to the parent node.
+
+## Algorithm
+
+1. Start DFS from the root.
+2. If the current node is `None`, return `(0, 0)`.
+3. Recursively find the sum and count of the left subtree.
+4. Recursively find the sum and count of the right subtree.
+5. Calculate the total sum:
+   `sum = root.val + leftSum + rightSum`
+6. Calculate the total number of nodes:
+   `count = 1 + leftCount + rightCount`
+7. Check whether:
+   `sum // count == root.val`.
+8. If true, increase the answer by 1.
+9. Return `(sum, count)` to the parent.
+10. After DFS finishes, return the answer.
+
+## Complexity Analysis
+
+- Time Complexity: O(n)
+- Space Complexity: O(h)
+
+Where:
+- `n` is the number of nodes.
+- `h` is the height of the binary tree.
+
+## Example
+
+Input:
+root = [4,8,5,0,1,null,6]
+
+Output:
+5
+
+The nodes whose values are equal to the average of their respective subtrees are counted.
+
+## Key Concept
+
+The main concept used is **Postorder DFS** because we need the left and right subtree information before calculating the current node's subtree sum and count.
