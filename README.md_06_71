@@ -1,1 +1,74 @@
+# LeetCode 71 — Simplify Path
 
+## Problem
+
+Given an absolute path for a Unix-style file system, simplify it into its canonical path.
+
+The path always starts with `/`.
+
+## Approach
+
+This solution uses a **Stack**.
+
+We split the path using `/` and process each directory one by one.
+
+- `""` → Ignore empty parts caused by consecutive slashes.
+- `"."` → Represents the current directory, so ignore it.
+- `".."` → Represents the parent directory, so remove the last directory from the stack if possible.
+- Any other name → Add it to the stack.
+
+Finally, join all remaining directories with `/`.
+
+## Algorithm
+
+1. Split the path using `/`.
+2. Create an empty stack.
+3. Traverse every part of the path.
+4. If the part is `"."` or empty, ignore it.
+5. If the part is `".."`:
+   - If the stack is not empty, remove the last directory.
+6. Otherwise, add the directory to the stack.
+7. Join the stack elements using `/`.
+8. Add `/` at the beginning.
+9. Return the simplified canonical path.
+
+## Example
+
+Input:
+
+`path = "/home/"`
+
+Output:
+
+`"/home"`
+
+### Example 2
+
+Input:
+
+`path = "/home//foo/"`
+
+Output:
+
+`"/home/foo"`
+
+### Example 3
+
+Input:
+
+`path = "/home/user/Documents/../Pictures"`
+
+Output:
+
+`"/home/user/Pictures"`
+
+## Complexity Analysis
+
+- Time Complexity: `O(n)`
+- Space Complexity: `O(n)`
+
+Where `n` is the length of the path.
+
+## Key Concept
+
+The main concept used is a **Stack**, because `".."` requires removing the most recently added directory.
