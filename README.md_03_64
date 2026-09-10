@@ -1,1 +1,81 @@
+# LeetCode 64 — Minimum Path Sum
 
+## Problem
+
+Given an `m x n` grid filled with non-negative numbers, find a path from the top-left corner to the bottom-right corner that minimizes the sum of all numbers along its path.
+
+You can only move either **down** or **right** at any point.
+
+## Approach
+
+This solution uses **Dynamic Programming (DP)**.
+
+For each cell, calculate the minimum path sum required to reach that cell.
+
+For a cell `grid[i][j]`:
+
+- From the top: `grid[i-1][j]`
+- From the left: `grid[i][j-1]`
+
+Therefore:
+
+`grid[i][j] = grid[i][j] + min(top, left)`
+
+### First Row
+
+There is only one possible path, from the left:
+
+`grid[0][j] += grid[0][j-1]`
+
+### First Column
+
+There is only one possible path, from above:
+
+`grid[i][0] += grid[i-1][0]`
+
+### Other Cells
+
+Choose the minimum of the top and left cells:
+
+`grid[i][j] += min(grid[i-1][j], grid[i][j-1])`
+
+The bottom-right cell will contain the minimum path sum.
+
+## Algorithm
+
+1. Find the number of rows `m` and columns `n`.
+2. Traverse the grid row by row.
+3. For the first cell `(0,0)`, keep its original value.
+4. For cells in the first row, add the value from the left.
+5. For cells in the first column, add the value from above.
+6. For all other cells, add the minimum of the top and left values.
+7. Return `grid[m-1][n-1]`.
+
+## Example
+
+Input:
+
+`grid = [[1,3,1],[1,5,1],[4,2,1]]`
+
+Output:
+
+`7`
+
+Minimum path:
+
+`1 → 3 → 1 → 1 → 1`
+
+Sum:
+
+`1 + 3 + 1 + 1 + 1 = 7`
+
+## Complexity Analysis
+
+- Time Complexity: O(m × n)
+- Space Complexity: O(1)
+
+The input grid itself is modified to store the DP values.
+
+## Key Concept
+
+The main concept used is **Dynamic Programming**, where each cell stores the minimum path sum needed to reach that cell.
