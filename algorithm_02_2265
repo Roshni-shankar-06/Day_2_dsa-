@@ -1,1 +1,50 @@
+ALGORITHM: Count Nodes Equal to Average of Subtree
 
+1. Start.
+
+2. Initialize answer = 0.
+
+3. Define a DFS function:
+
+   If the current node is NULL:
+       Return (0, 0)
+
+4. Recursively call DFS on the left child.
+   Store:
+       leftSum
+       leftCount
+
+5. Recursively call DFS on the right child.
+   Store:
+       rightSum
+       rightCount
+
+6. Calculate:
+       totalSum = node.val + leftSum + rightSum
+
+7. Calculate:
+       totalCount = 1 + leftCount + rightCount
+
+8. Calculate the average:
+       average = totalSum // totalCount
+
+9. If:
+       average == node.val
+
+   Then:
+       answer = answer + 1
+
+10. Return:
+       (totalSum, totalCount)
+
+11. Call DFS(root).
+
+12. Return answer.
+
+TIME COMPLEXITY:
+O(n)
+
+SPACE COMPLEXITY:
+O(h)
+
+where n is the number of nodes and h is the height of the tree.
