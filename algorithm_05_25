@@ -1,1 +1,40 @@
+ALGORITHM: Reverse Nodes in k-Group
 
+1. Start.
+
+2. Check whether there are at least k nodes
+   starting from the current head.
+
+3. If fewer than k nodes are available:
+       Return head.
+       Do not reverse the remaining nodes.
+
+4. Initialize:
+       prev = NULL
+       cur = head
+
+5. Reverse exactly k nodes:
+
+       Repeat k times:
+           next = cur.next
+           cur.next = prev
+           prev = cur
+           cur = next
+
+6. After reversing:
+       prev = new head of the current group
+       head = last node of the current group
+
+7. Recursively reverse the remaining nodes:
+       head.next = reverseKGroup(cur, k)
+
+8. Return prev.
+
+9. Continue until the complete linked list
+   has been processed.
+
+TIME COMPLEXITY:
+O(n)
+
+SPACE COMPLEXITY:
+O(n/k) due to recursion.
