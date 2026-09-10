@@ -1,1 +1,43 @@
+ALGORITHM: Merge k Sorted Lists
 
+1. Start.
+
+2. Create a Min Heap (Priority Queue).
+
+3. For every linked list:
+      If the list is not empty:
+          Insert its first node into the Min Heap.
+
+4. Create a dummy node.
+
+5. Set:
+      curr = dummy
+
+6. While the Min Heap is not empty:
+
+      a. Remove the node with the smallest value
+         from the Min Heap.
+
+      b. Attach this node to:
+             curr->next
+
+      c. Move curr to this node.
+
+      d. If the removed node has a next node:
+             Insert the next node into the Min Heap.
+
+7. When the Min Heap becomes empty,
+   all linked lists have been merged.
+
+8. Return:
+      dummy->next
+
+TIME COMPLEXITY:
+O(N log k)
+
+SPACE COMPLEXITY:
+O(k)
+
+where:
+N = total number of nodes
+k = number of linked lists
