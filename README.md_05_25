@@ -1,1 +1,70 @@
+# LeetCode 25 — Reverse Nodes in k-Group
 
+## Problem
+
+Given the head of a linked list, reverse the nodes of the list `k` at a time and return the modified list.
+
+If the number of nodes is not a multiple of `k`, the remaining nodes at the end should remain in their original order.
+
+The values of the nodes cannot be changed. Only the links between the nodes can be modified.
+
+## Approach
+
+This solution uses **Linked List Reversal**.
+
+We process the linked list in groups of `k` nodes.
+
+For every group:
+
+1. Check whether there are at least `k` nodes available.
+2. Reverse those `k` nodes.
+3. Connect the reversed group to the previous group.
+4. Continue with the next group.
+5. If fewer than `k` nodes remain, leave them unchanged.
+
+The solution uses recursion to process the remaining linked list.
+
+## Algorithm
+
+1. Start with the `head` of the linked list.
+2. Check whether at least `k` nodes are available.
+3. If fewer than `k` nodes are available, return `head` without changing it.
+4. Reverse the first `k` nodes using three pointers:
+   - `prev`
+   - `cur`
+   - `next`
+5. After reversing the group, the original first node becomes the last node of the group.
+6. Recursively reverse the remaining linked list.
+7. Connect the last node of the current group to the result of the recursive call.
+8. Return `prev`, which is the new head of the reversed group.
+
+## Example
+
+Input:
+
+`head = [1,2,3,4,5], k = 2`
+
+Output:
+
+`[2,1,4,3,5]`
+
+The groups are:
+
+`[1,2] [3,4] [5]`
+
+Reverse each complete group:
+
+`[2,1] [4,3] [5]`
+
+Since the last group contains fewer than `k` nodes, it remains unchanged.
+
+## Complexity Analysis
+
+- Time Complexity: `O(n)`
+- Space Complexity: `O(n/k)` due to recursion.
+
+Where `n` is the number of nodes in the linked list.
+
+## Key Concept
+
+The main concept used is **Reversing a Linked List in Groups** using pointer manipulation.
